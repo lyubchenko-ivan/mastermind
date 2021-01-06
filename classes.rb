@@ -1,5 +1,10 @@
+require './global.rb'
+require './Game_class.rb'
+
+
+#Игрок
 class Player
-  attr_accessor :username
+  attr_accessor :username, :id
   @@count_players = 1
 
   def initialize(username)
@@ -7,37 +12,49 @@ class Player
     @id = @@count_players
     @@count_players += 1
   end
-end
 
-class CodeCreator
+  def create_code_byplayer
+    code = []
+    str = nil
+    system("clear")
+    puts "Введите комбинацию"
 
-end
+    $CODE_SIZE.times do |index|
+      temp = nil
+      begin
+        print "Введите #{index + 1}-ый символ кобинации: "
+        temp = gets.chomp.strip
 
-class Decoder
+      end while(temp.length != 1 || !$COLORS.include?(temp))
+      code << temp
+    end
 
-end
-
-class Game
-
-  def display_rules
-    puts "Теперь немного правил"
-    puts "1. Загадывает комбинацибю компьютер. Ваше дело ее отгадать."
-    puts "Комбинация состоит из 4 цветов"
-    puts "У тебя 12 попыток, удачи!"
-    puts "Как бдешь готов, нажми Enter"
-    gets
+    code
   end
 
+
+  def createCodeByComp
+    code = []
+    $CODE_SIZE.times do
+      code << $COLORS.sample
+    end
+
+    return  code
+  end
 end
+
+
+#Класс описывающий шифровщика
+class CodeCreator < Player
+end
+
+
+#класс описывающий дешифровщика
+class Decoder < Player
+
+end
+
 
 class Desk
-
-end
-
-class Combination
-
-end
-
-class GoodCombination
 
 end
