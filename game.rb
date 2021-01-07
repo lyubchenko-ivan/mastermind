@@ -12,6 +12,7 @@ puts "Не судите сильно строго, приятной игры"
 
 username = nil
 
+
 #создаем дешифровщика
 begin
   puts "Введите имя игрока"
@@ -41,3 +42,10 @@ game.getGoodCode
 
 #написать логику и последовательность ходов декодера
 
+begin
+  game.getAttemptCode
+  game.corrections
+  puts "Нажмите Enter для начала следующего хода"
+  # print game.goodCode
+  gets
+end  while (game.decoder_win? == false && game.coder_win? == false)

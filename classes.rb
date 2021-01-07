@@ -16,7 +16,6 @@ class Player
   def create_code_byplayer
     code = []
     str = nil
-    system("clear")
     puts "Введите комбинацию"
 
     $CODE_SIZE.times do |index|
@@ -46,6 +45,7 @@ end
 
 #Класс описывающий шифровщика
 class CodeCreator < Player
+
 end
 
 
